@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T R Aromal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #faf3f0;
+            margin: 0;
+            padding: 0;
+            color: #000000;
+            cursor: none;
+        }
+
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ffd700;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border: 3px solid #000000;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #000000;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ffd700;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        h1, h2 {
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after, h2::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            bottom: 5px;
+            left: 0;
+            background-color: #ffd700;
+            z-index: -1;
+            transition: height 0.3s ease;
+        }
+
+        h1:hover::after, h2:hover::after {
+            height: 20px;
+        }
+
+        .cta-button {
+            background-color: #ffd700;
+            border: 2px solid #000000;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '🚀';
+            position: absolute;
+            top: 50%;
+            left: -30px;
+            transform: translateY(-50%);
+            transition: left 0.3s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 10px;
+        }
+
+        .cta-button:hover {
+            padding-left: 40px;
+        }
+
+        .grid-item {
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-5px) rotate(2deg);
+            box-shadow: 5px 5px 0 #ffd700;
+        }
+
+        .floating-shape {
+            position: absolute;
+            z-index: -1;
+            transition: all 0.3s ease;
+            cursor: grab;
+        }
+
+        .floating-shape:active {
+            cursor: grabbing;
+        }
+
+        #shape1 { top: 10%; left: 5%; font-size: 3em; }
+        #shape2 { top: 20%; right: 10%; font-size: 2em; }
+        #shape3 { bottom: 15%; left: 10%; font-size: 2.5em; }
+        #shape4 { bottom: 10%; right: 5%; font-size: 3em; }
+
+        .fun-button {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .fun-button:hover {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        @media (max-width: 768px) {
+            .hero, .grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-cursor"></div>
+    <canvas id="confetti-canvas"></canvas>
+    <div class="container">
+        <nav>
+            <div class="logo" onclick="explode()">aromal</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+            </div>
+        </nav>
+
+        <div class="hero">
+            <div class="hero-text">
+                <h1>I'm T R Aromal</h1>
+                <p>AI & Data Scientist specializing in LLMs, NLP, and Machine Learning</p>
+                <a href="#contact" class="cta-button">Contact Me</a>
+            </div>
+        </div>
+
+        <div class="section" id="about">
+            <h2>About Me</h2>
+            <p>I'm a Junior Data Scientist with a strong background in AI and Computer Science. My expertise lies in developing innovative AI solutions, particularly in the areas of Natural Language Processing and Machine Learning.</p>
+            <button class="fun-button" onclick="changeBackgroundColor()">Change Background Color</button>
+            <button class="fun-button" onclick="startConfetti()">Celebrate!</button>
+        </div>
+
+        <div class="section" id="education">
+            <h2>Education</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <h3>MSc Artificial Intelligence</h3>
+                    <p>Department of Computer Science, University of Kerala</p>
+                    <p>2021 - 2023</p>
+                </div>
+                <div class="grid-item">
+                    <h3>BSc Computer Science</h3>
+                    <p>University Institute of Technology - Mulamkadakom, Kollam</p>
+                    <p>2018 - 2021</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="experience">
+            <h2>Experience</h2>
+            <div class="grid-item">
+                <h3>Junior Data Scientist</h3>
+                <p>GAUDE Business and Infrastructure Solutions</p>
+                <p>Nov 2023 - Present</p>
+                <ul>
+                    <li> Developed a framework for creating chatbots which can be seamlessly integrated to any websites with its own custom
+                        backend and with personalized knowledge bases, and use rag to answer the users query.The chatbot interface is fully
+                        customizable according to the clients requirement. Implemented session-based chat history viewing and storage to see
+                        individual user interaction with the chatbot.. the admin can see the total individual chats and the total number of
+                        messages
+                        </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="projects">
+            <h2>Projects</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <h3>LLM Finetuning</h3>
+                    <p>Finetuned llama-3.2-3b and mistal-7b using unsloth in malayalam language using the Alpaca malayalam instruct
+                        dataset and is available on huggingface</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Multilingual LLAMA using Bhashini</h3>
+                    <p>Implemented a translation based multilingual Llama-2 7b local LLM model supporting 13 Indian languages by utilizing
+                        the Bhashini machine translation API by Ai4Bharath for input and output text translation based on the user language</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Multi Agent Dashboard</h3>
+                    <p> A multi-agent framework which allow the user to create an agent for a specific task and give roles based on that which
+                        comprises of a web scraping agent capable of summarizing website contents. and a chat chatbot arena where 2 agents
+                        debates each other on a particular given topic</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Chat Ollama</h3>
+                    <p> Created an open-source chat interface for Ollama, Usually ollama is accessed through the terminal this new interface
+                        facilitating user interaction with various models which is robust all you need is ollama installed and download the
+                        required models and you can select the model from the dashboard and chat with it fully in your local hardware</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Fine-tuned BERT for Text Classification</h3>
+                    <p>Optimized model performance for spam text/email classification</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Document QA Chatbot</h3>
+                    <p> Designed a multi-agent RAG-based chatbot for document interaction using LlamaIndex Agents which make use of
+                        collections in the chromadb for more accurate information retrieval
+                        </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="skills">
+            <h2>Skills</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <h3>Languages</h3>
+                    <p>Python, R, SQL, HTML, CSS, JavaScript</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Frameworks & Libraries</h3>
+                    <p>Django, RASA, Langchain, Hugging Face, LlamaIndex, TensorFlow</p>
+                </div>
+                <div class="grid-item">
+                    <h3>AI/ML</h3>
+                    <p>Deep Learning, Machine Learning, Natural Language Processing (NLP)</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Tools</h3>
+                    <p>Git, GitHub, Power BI, MySQL, Vector DB</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Concepts</h3>
+                    <p>LLMs, Agents, CrewAI, Fine-tuning</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="certifications">
+            <h2>Certifications</h2>
+            <ul>
+                <li>NLP and its applications by ICFOSS</li>
+                <li>Pre-training of LLM by deeplearning.ai</li>
+                <li>Multi-agent system using CrewAI by deeplearning.ai</li>
+                <li>Fine Tuning Large Language Models by deeplearning.ai</li>
+                <li>Python for Data Science, AI & Development (IBM) - Coursera</li>
+                <li>Foundations: Data, Data, Everywhere (Google) - Coursera</li>
+            </ul>
+        </div>
+
+        <div class="section" id="contact">
+            <h2>Contact</h2>
+            <p>Email: aromaltr2000@gmail.com</p>
+            <p>Phone: +91 7591903461</p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/aromal-t-r" target="_blank">Aromal T R</a></p>
+            <p>GitHub: <a href="https://github.com/traromal" target="_blank">traromal</a></p>
+        </div>
+
+        <div class="floating-shape" id="shape1">🤖</div>
+        <div class="floating-shape" id="shape2">📊</div>
+        <div class="floating-shape" id="shape3">💻</div>
+        <div class="floating-shape" id="shape4">🧠</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        // Custom cursor
+        const cursor = document.querySelector('.custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Fun button to change background color
+        function changeBackgroundColor() {
+            const colors = ['#faf3f0', '#f0faf3', '#f3f0fa', '#faf0f3'];
+            document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Make floating shapes draggable
+        const shapes = document.querySelectorAll('.floating-shape');
+        shapes.forEach(shape => {
+            shape.addEventListener('mousedown', dragStart);
+            shape.addEventListener('mouseup', dragEnd);
+            shape.addEventListener('mousemove', drag);
+        });
+
+        let active = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+
+        function dragStart(e) {
+            initialX = e.clientX - xOffset;
+            initialY = e.clientY - yOffset;
+
+            if (e.target === this) {
+                active = true;
+            }
+        }
+
+        function dragEnd(e) {
+            initialX = currentX;
+            initialY = currentY;
+
+            active = false;
+        }
+
+        function drag(e) {
+            if (active) {
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                setTranslate(currentX, currentY, this);
+            }
+        }
+
+        function setTranslate(xPos, yPos, el) {
+            el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+        }
+
+        // Logo explosion effect
+        function explode() {
+            const logo = document.querySelector('.logo');
+            logo.style.transform = 'scale(1.5)';
+            setTimeout(() => {
+                logo.style.transform = 'scale(1)';
+            }, 300);
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+
+        // Confetti celebration
+        function startConfetti() {
+            const duration = 5 * 1000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+    </script>
+</body>
+</html>
