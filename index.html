@@ -2,13 +2,11 @@
 <html lang="en">
 <head>
     <script src="https://70b0-202-88-236-158.ngrok-free.app/media/chat_widgets/user_2_widget.js?v=1741764766?v=1741764766"></script>
-    
-
-
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T R Aromal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
@@ -198,13 +196,20 @@
     <div class="custom-cursor"></div>
     <canvas id="confetti-canvas"></canvas>
     <div class="container">
-        <nav>
-            <div class="logo" onclick="explode()">aromal</div>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <div class="logo navbar-brand" onclick="explode()">aromal</div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="nav-links navbar-nav">
+                        <a class="nav-item nav-link" href="#about">About</a>
+                        <a class="nav-item nav-link" href="#experience">Experience</a>
+                        <a class="nav-item nav-link" href="#projects">Projects</a>
+                        <a class="nav-item nav-link" href="#skills">Skills</a>
+                    </div>
+                </div>
             </div>
         </nav>
 
@@ -225,13 +230,13 @@
 
         <div class="section" id="education">
             <h2>Education</h2>
-            <div class="grid">
-                <div class="grid-item">
+            <div class="grid row">
+                <div class="grid-item col-md-6">
                     <h3>MSc Artificial Intelligence</h3>
                     <p>Department of Computer Science, University of Kerala</p>
                     <p>2021 - 2023</p>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item col-md-6">
                     <h3>BSc Computer Science</h3>
                     <p>University Institute of Technology - Mulamkadakom, Kollam</p>
                     <p>2018 - 2021</p>
@@ -251,69 +256,69 @@
                         customizable according to the clients requirement. Implemented session-based chat history viewing and storage to see
                         individual user interaction with the chatbot.. the admin can see the total individual chats and the total number of
                         messages
-                        </li>
+                    </li>
                 </ul>
             </div>
         </div>
 
         <div class="section" id="projects">
             <h2>Projects</h2>
-            <div class="grid">
-                <div class="grid-item">
+            <div class="grid row">
+                <div class="grid-item col-md-6">
                     <h3>LLM Finetuning</h3>
                     <p>Finetuned llama-3.2-3b and mistal-7b using unsloth in malayalam language using the Alpaca malayalam instruct
                         dataset and is available on huggingface</p>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item col-md-6">
                     <h3>Multilingual LLAMA using Bhashini</h3>
                     <p>Implemented a translation based multilingual Llama-2 7b local LLM model supporting 13 Indian languages by utilizing
                         the Bhashini machine translation API by Ai4Bharath for input and output text translation based on the user language</p>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item col-md-6">
                     <h3>Multi Agent Dashboard</h3>
                     <p> A multi-agent framework which allow the user to create an agent for a specific task and give roles based on that which
                         comprises of a web scraping agent capable of summarizing website contents. and a chat chatbot arena where 2 agents
                         debates each other on a particular given topic</p>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item col-md-6">
                     <h3>Chat Ollama</h3>
                     <p> Created an open-source chat interface for Ollama, Usually ollama is accessed through the terminal this new interface
                         facilitating user interaction with various models which is robust all you need is ollama installed and download the
                         required models and you can select the model from the dashboard and chat with it fully in your local hardware</p>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item col-md-6">
                     <h3>Fine-tuned BERT for Text Classification</h3>
                     <p>Optimized model performance for spam text/email classification</p>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item col-md-6">
                     <h3>Document QA Chatbot</h3>
                     <p> Designed a multi-agent RAG-based chatbot for document interaction using LlamaIndex Agents which make use of
                         collections in the chromadb for more accurate information retrieval
-                        </p>
+                    </p>
                 </div>
             </div>
         </div>
 
         <div class="section" id="skills">
             <h2>Skills</h2>
-            <div class="grid">
-                <div class="grid-item">
+            <div class="grid row">
+                <div class="grid-item col-md-6">
                     <h3>Languages</h3>
                     <p>Python, R, SQL, HTML, CSS, JavaScript</p>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item col-md-6">
                     <h3>Frameworks & Libraries</h3>
                     <p>Django, RASA, Langchain, Hugging Face, LlamaIndex, TensorFlow</p>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item col-md-6">
                     <h3>AI/ML</h3>
                     <p>Deep Learning, Machine Learning, Natural Language Processing (NLP)</p>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item col-md-6">
                     <h3>Tools</h3>
                     <p>Git, GitHub, Power BI, MySQL, Vector DB</p>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item col-md-6">
                     <h3>Concepts</h3>
                     <p>LLMs, Agents, CrewAI, Fine-tuning</p>
                 </div>
@@ -347,6 +352,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
         // Custom cursor
         const cursor = document.querySelector('.custom-cursor');
